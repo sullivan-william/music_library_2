@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Gallery from './components/Gallery';
 import SearchBar from './components/SearchBar';
+import './App.css';
 
 function App() {
   let [search, setSearch] = useState('')
@@ -8,7 +9,7 @@ function App() {
   let [data, setData] = useState([])
 
   return (
-    <div>
+    <div className='App'>
       <SearchBar />
       {message}
       <Gallery />
