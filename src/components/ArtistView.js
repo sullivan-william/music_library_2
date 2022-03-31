@@ -40,6 +40,7 @@ function ArtistView() {
 
     return (
         <div>
+            {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <h2>Loading...</h2>}
             {navButtons()}
             {renderAlbums}
         </div>
