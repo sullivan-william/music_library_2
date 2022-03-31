@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Gallery from './components/Gallery';
 import SearchBar from './components/SearchBar';
 import './App.css';
@@ -10,6 +10,16 @@ function App() {
   let [data, setData] = useState(null)
 
   const API_URL = 'https://itunes.apple.com/search?term='
+
+  const renderGallery = () => {
+    if(data) {
+      return (
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Gallery data={data} />
+        </Suspense>
+      )
+    }
+  }
 
   useEffect(() => {
     if(search) {
@@ -26,7 +36,7 @@ function App() {
     <div className='App'>
       <SearchBar handleSearch={handleSearch} />
       {message}
-      {/* <Gallery data={data} /> */}
+      {renderGallery()}
     </div>
   )
 }
